@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shaik Irfan Mohiddin | Portfolio</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#0b0f10",
+                    "error-dim": "#4e0309",
+                    "primary": "#4c6078",
+                    "error": "#9f403d",
+                    "error-container": "#fe8983",
+                    "surface-bright": "#f7f9fb",
+                    "secondary-fixed": "#d5e3fc",
+                    "on-error": "#fff7f6",
+                    "primary-fixed-dim": "#c2d6f3",
+                    "tertiary-fixed": "#dbdefe",
+                    "surface-container-low": "#f0f4f7",
+                    "on-primary-fixed-variant": "#4a5d75",
+                    "tertiary-fixed-dim": "#ccd0ef",
+                    "surface": "#f7f9fb",
+                    "tertiary-container": "#dbdefe",
+                    "on-secondary-container": "#455367",
+                    "secondary-fixed-dim": "#c7d5ed",
+                    "surface-container": "#e8eff3",
+                    "inverse-primary": "#cadefb",
+                    "background": "#f7f9fb",
+                    "on-tertiary": "#faf8ff",
+                    "surface-tint": "#4c6078",
+                    "inverse-on-surface": "#9a9d9f",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#526074",
+                    "surface-dim": "#cfdce3",
+                    "on-primary-container": "#40536b",
+                    "on-background": "#2a3439",
+                    "on-surface-variant": "#566166",
+                    "primary-container": "#d1e4ff",
+                    "secondary-container": "#d5e3fc",
+                    "on-tertiary-fixed-variant": "#545873",
+                    "surface-container-highest": "#d9e4ea",
+                    "primary-fixed": "#d1e4ff",
+                    "on-error-container": "#752121",
+                    "surface-variant": "#d9e4ea",
+                    "on-secondary": "#f8f8ff",
+                    "secondary-dim": "#465468",
+                    "on-tertiary-fixed": "#383c55",
+                    "outline-variant": "#a9b4b9",
+                    "on-secondary-fixed": "#324053",
+                    "primary-dim": "#41546c",
+                    "on-secondary-fixed-variant": "#4e5c71",
+                    "on-surface": "#2a3439",
+                    "tertiary": "#595d78",
+                    "on-primary": "#f5f7ff",
+                    "surface-container-high": "#e1e9ee",
+                    "tertiary-dim": "#4d526c",
+                    "on-primary-fixed": "#2d4158",
+                    "on-tertiary-container": "#4a4e69",
+                    "outline": "#717c82"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Newsreader', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+// mobile toggle
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.addEventListener("click",()=>{
+mobileMenu.classList.toggle("hidden");
+});
+
+// close mobile menu
+document.querySelectorAll(".nav-link").forEach(link=>{
+link.addEventListener("click",()=>{
+mobileMenu.classList.add("hidden");
+});
+});
+
+// scroll spy highlight
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll",()=>{
+
+let current = "";
+
+sections.forEach(section=>{
+const sectionTop = section.offsetTop - 200;
+const sectionHeight = section.clientHeight;
+
+if(window.scrollY >= sectionTop){
+current = section.getAttribute("id");
+}
+});
+
+navLinks.forEach(link=>{
+link.classList.remove("active");
+
+if(link.getAttribute("href") === "#" + current){
+link.classList.add("active");
+}
+});
+
+});
+
+// navbar shrink
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll",()=>{
+if(window.scrollY > 50){
+navbar.classList.add("shadow-md");
+}else{
+navbar.classList.remove("shadow-md");
+}
+});
+
+// progress bar
+const progress = document.getElementById("progressBar");
+
+window.addEventListener("scroll",()=>{
+const height =
+document.documentElement.scrollHeight -
+document.documentElement.clientHeight;
+
+const scrolled =
+(window.scrollY / height) * 100;
+
+progress.style.width = scrolled + "%";
+});
+
+});
+</script>
+
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+
+<!-- Top Navigation Bar -->
+<div id="progressBar" class="fixed top-0 left-0 h-[3px] bg-primary z-[60] w-0"></div>
+
+<nav id="navbar" class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl transition-all duration-300">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-8 py-4">
+
+<div class="font-serif italic text-xl md:text-2xl">
+Shaik Irfan Mohiddin
+</div>
+
+<!-- desktop -->
+<div id="navMenu" class="hidden md:flex items-center space-x-8 font-serif text-lg">
+<a class="nav-link" href="#intro">Intro</a>
+<a class="nav-link" href="#about">About</a>
+<a class="nav-link" href="#skills">Skills</a>
+<a class="nav-link" href="#projects">Projects</a>
+<a class="nav-link" href="#experience">Experience</a>
+<a class="nav-link" href="#certifications">Certifications</a>
+<a class="nav-link" href="#contact">Contact</a>
+</div>
+
+<div class="flex items-center gap-3">
+
+<a class="bg-primary text-on-primary px-6 py-2 rounded-md font-medium hover:bg-primary-dim transition-transform duration-200 active:scale-95 shadow-sm" href="Resume.pdf", target="_blank"> Preview CV </a>
+
+<button id="menuBtn" class="md:hidden">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+
+</div>
+</div>
+
+<!-- mobile -->
+<div id="mobileMenu" class="hidden md:hidden px-6 pb-6 space-y-4 bg-slate-50 dark:bg-slate-950">
+<a class="block nav-link" href="#intro">Intro</a>
+<a class="block nav-link" href="#about">About</a>
+<a class="block nav-link" href="#skills">Skills</a>
+<a class="block nav-link" href="#projects">Projects</a>
+<a class="block nav-link" href="#experience">Experience</a>
+<a class="block nav-link" href="#certifications">Certifications</a>
+<a class="block nav-link" href="#contact">Contact</a>
+</div>
+</nav>
+<style>
+.nav-link{
+position:relative;
+color:#6b7280;
+transition:.3s;
+}
+
+.nav-link:hover{
+color:#111827;
+}
+
+.nav-link::after{
+content:"";
+position:absolute;
+bottom:-6px;
+left:0;
+width:0%;
+height:2px;
+background:#4c6078;
+transition:.3s;
+}
+
+.nav-link.active{
+color:#111827;
+font-weight:600;
+}
+
+.nav-link.active::after{
+width:100%;
+}
+</style>
+<!-- Intro (Hero) Section -->
+<section class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-8 overflow-hidden bg-surface" id="intro">
+<div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+<div class="md:col-span-7 space-y-8">
+<div class="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-semibold tracking-widest uppercase">
+                    B.Tech CSE — SRM University AP
+                </div>
+<h1 class="font-serif text-6xl md:text-8xl text-on-surface leading-tight tracking-tighter">
+                    Full Stack <br/> <span class="italic text-primary">Developer.</span>
+</h1>
+<p class="text-xl md:text-2xl text-on-surface-variant max-w-xl leading-relaxed font-light">
+                    Building scalable web applications and intelligent systems. Passionate about crafting clean code across the full stack — from RESTful APIs to ML-powered interfaces.
+                </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<a class="bg-primary text-on-primary px-8 py-4 rounded-md font-medium text-lg hover:bg-primary-dim transition-all" href="#projects">
+                        View Projects
+                    </a>
+<a class="border border-outline px-8 py-4 rounded-md font-medium text-lg hover:bg-surface-container-low transition-all" href="#contact">
+                        Contact Me
+                    </a>
+</div>
+</div>
+<div class="md:col-span-5 relative">
+<div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl bg-surface-container flex items-center justify-center">
+  <img alt="Profile Picture" class="object-cover w-full h-full" src="resume_picture.jpeg"/>
+</div>
+<div class="absolute -bottom-8 -left-8 w-48 h-48 bg-primary-container/20 rounded-full blur-3xl -z-10"></div>
+</div>
+</div>
+</section>
+
+<!-- About Me Section -->
+<section class="py-24 px-8 bg-surface-container-low" id="about">
+<div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-16">
+<div class="md:col-span-4">
+<h2 class="font-serif text-4xl text-on-surface sticky top-32">The Story <span class="text-outline-variant italic">&amp; Approach</span></h2>
+</div>
+<div class="md:col-span-8 space-y-12">
+<div class="space-y-6">
+<p class="font-serif text-3xl text-on-surface leading-snug">
+                        I believe great software is built at the intersection of logic and curiosity — where clean code meets real-world impact.
+                    </p>
+<div class="grid md:grid-cols-2 gap-8 text-on-surface-variant leading-relaxed text-lg">
+<p>
+                            I'm B.Tech Computer Science student at SRM University AP with hands-on experience in full stack web development. My journey began with a love for problem-solving, which led me to build real projects — from community portals to ML-powered advisory tools.
+                        </p>
+<p>
+                            I've interned at Edunet Foundation as a Full Stack Web Developer, where I built responsive applications using Node.js, Express.js, and MongoDB. I bring both technical depth and a drive for clean, purposeful code to every project I take on.
+                        </p>
+</div>
+</div>
+<!-- Stats Block -->
+<div class="p-12 bg-surface-container-highest rounded-xl">
+<div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
+<div class="space-y-1">
+<div class="text-4xl font-serif text-primary">7.9</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant">CGPA</div>
+</div>
+<div class="space-y-1">
+<div class="text-4xl font-serif text-primary">2+</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant">Projects Built</div>
+</div>
+
+<div class="space-y-1">
+<div class="text-4xl font-serif text-primary">1</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant">Internship</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Skills Section (Bento Grid) -->
+<section class="py-24 px-8 bg-surface" id="skills">
+<div class="max-w-7xl mx-auto space-y-16">
+<div class="flex justify-between items-end">
+<h2 class="font-serif text-5xl text-on-surface">Core Competencies</h2>
+<p class="text-on-surface-variant max-w-sm text-right">Technical pillars that define my approach to building full stack and ML-driven applications.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Skill 1 -->
+<div class="md:col-span-2 p-8 bg-surface-container-lowest rounded-xl shadow-[0px_12px_32px_rgba(42,52,57,0.04)] hover:shadow-[0px_12px_32px_rgba(42,52,57,0.08)] transition-all">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">code</span>
+<h3 class="font-serif text-2xl text-on-surface mb-2">Web Development</h3>
+<p class="text-on-surface-variant leading-relaxed">Building responsive, full stack applications with Node.js, Express.js, MongoDB, HTML, CSS, and JavaScript — from REST APIs to dynamic UI components.</p>
+</div>
+<!-- Skill 2 -->
+<div class="p-8 bg-surface-container-lowest rounded-xl shadow-[0px_12px_32px_rgba(42,52,57,0.04)] hover:shadow-[0px_12px_32px_rgba(42,52,57,0.08)] transition-all">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">psychology</span>
+<h3 class="font-serif text-2xl text-on-surface mb-2">Machine Learning</h3>
+<p class="text-on-surface-variant leading-relaxed">Training and deploying ML models using scikit-learn, pandas, and NumPy with Flask-powered web interfaces.</p>
+</div>
+<!-- Skill 3 -->
+<div class="p-8 bg-surface-container-lowest rounded-xl shadow-[0px_12px_32px_rgba(42,52,57,0.04)] hover:shadow-[0px_12px_32px_rgba(42,52,57,0.08)] transition-all">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">storage</span>
+<h3 class="font-serif text-2xl text-on-surface mb-2">Database & APIs</h3>
+<p class="text-on-surface-variant leading-relaxed">Designing and managing MongoDB databases, performing CRUD operations and integrating third-party APIs like SendGrid and OpenWeatherMap.</p>
+</div>
+<!-- Skill 4 -->
+<div class="p-8 bg-surface-container-lowest rounded-xl shadow-[0px_12px_32px_rgba(42,52,57,0.04)] hover:shadow-[0px_12px_32px_rgba(42,52,57,0.08)] transition-all">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">terminal</span>
+<h3 class="font-serif text-2xl text-on-surface mb-2">Languages & Tools</h3>
+<p class="text-on-surface-variant leading-relaxed">Proficient in C++, Java, Python, and SQL. Strong foundation in DSA and OOP principles.</p>
+</div>
+<!-- Skill 5 -->
+<div class="md:col-span-3 p-8 bg-surface-container-lowest rounded-xl shadow-[0px_12px_32px_rgba(42,52,57,0.04)] hover:shadow-[0px_12px_32px_rgba(42,52,57,0.08)] transition-all">
+<div class="flex flex-col md:flex-row gap-8">
+<div class="flex-1">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">rocket_launch</span>
+<h3 class="font-serif text-2xl text-on-surface mb-2">Development Practices</h3>
+<p class="text-on-surface-variant leading-relaxed">Writing production-ready code with Git version control, agile workflows, code reviews, and performance optimization.</p>
+</div>
+<div class="flex-1 flex items-center gap-4 flex-wrap">
+<span class="px-4 py-2 bg-tertiary-container text-on-tertiary-container rounded-full text-sm">Git & GitHub</span>
+<span class="px-4 py-2 bg-tertiary-container text-on-tertiary-container rounded-full text-sm">Agile Workflows</span>
+<span class="px-4 py-2 bg-tertiary-container text-on-tertiary-container rounded-full text-sm">Code Reviews</span>
+<span class="px-4 py-2 bg-tertiary-container text-on-tertiary-container rounded-full text-sm">REST APIs</span>
+<span class="px-4 py-2 bg-tertiary-container text-on-tertiary-container rounded-full text-sm">Flask</span>
+<span class="px-4 py-2 bg-tertiary-container text-on-tertiary-container rounded-full text-sm">React.js (Familiar)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Projects (Case Studies) Section -->
+<section class="py-24 px-8 bg-surface-container" id="projects">
+<div class="max-w-7xl mx-auto space-y-16">
+<div class="flex flex-col md:flex-row justify-between md:items-center gap-8">
+<h2 class="font-serif text-5xl text-on-surface">Selected Projects</h2>
+<div class="h-px bg-outline-variant/30 flex-grow mx-8 hidden md:block"></div>
+<p class="text-on-surface-variant uppercase tracking-widest text-sm font-semibold">Impact Over Output</p>
+</div>
+<div class="space-y-24">
+<!-- Project 1 -->
+<div class="grid md:grid-cols-2 gap-16 items-center group">
+<div class="order-2 md:order-1 space-y-6">
+<span class="text-primary font-bold tracking-widest text-xs uppercase">Python · Flask · scikit-learn · OpenWeatherMap API</span>
+<h3 class="font-serif text-4xl text-on-surface leading-tight">Smart Crop Advisory System</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                            An ML-powered web application that recommends the best crop to grow based on soil parameters (N, P, K, pH) and real-time weather data fetched via the OpenWeatherMap API.
+                        </p>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<span class="w-12 h-px bg-primary"></span>
+<span class="text-on-surface font-semibold">Random Forest Classifier trained on 2,200+ records across 22 crop types.</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-12 h-px bg-primary"></span>
+<span class="text-on-surface font-semibold">Dual recommendation modes — manual input & live city-based weather.</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-12 h-px bg-primary"></span>
+<span class="text-on-surface font-semibold">Top-3 predictions with confidence probabilities and feature importance charts.</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 text-primary font-medium hover:underline" href="https://github.com/irfanmohiddin/Smart-Crop-Advisory-System" target="_blank">
+  View on GitHub <span class="material-symbols-outlined text-base">arrow_outward</span>
+</a>
+</div>
+<div class="order-1 md:order-2 overflow-hidden rounded-xl bg-surface-container-lowest">
+
+    <img 
+        style="cursor: pointer; transition: transform 0.3s; border: none; box-shadow: none; width: 100%; height: 340px; object-fit: cover;" 
+        src="new_crop.jpg" alt="Crop Advisory"
+        onmouseover="this.style.transform='scale(1.08)';" 
+        onmouseout="this.style.transform='scale(1)';"
+        onclick="this.style.transform = this.style.transform === 'scale(1.08)' ? 'scale(1)' : 'scale(1.08)';"
+    />
+
+
+</div>
+</div>
+<!-- Project 2 -->
+<div class="grid md:grid-cols-2 gap-16 items-center group">
+<div class="overflow-hidden rounded-xl">
+    <img 
+        style="cursor: pointer; transition: transform 0.3s; border: none; box-shadow: none; width: 100%; height: 340px; object-fit: cover;" 
+        src="elder.jpg" 
+        alt="Elder Care Support Portal"
+        onmouseover="this.style.transform='scale(1.08)';" 
+        onmouseout="this.style.transform='scale(1)';"
+        onclick="this.style.transform = this.style.transform === 'scale(1.08)' ? 'scale(1)' : 'scale(1.08)';"
+    />
+</div>
+<div class="space-y-6">
+<span class="text-primary font-bold tracking-widest text-xs uppercase">Node.js · Express.js · MongoDB · SendGrid API</span>
+<h3 class="font-serif text-4xl text-on-surface leading-tight">Elder Care Support Portal</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                            A full-stack platform connecting elderly users with volunteers for real-time service requests, built with secure OTP-based authentication and role-based access control.
+                        </p>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<span class="w-12 h-px bg-primary"></span>
+<span class="text-on-surface font-semibold">Role-based access for elders and volunteers with request tracking.</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-12 h-px bg-primary"></span>
+<span class="text-on-surface font-semibold">Secure email OTP authentication via SendGrid API.</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-12 h-px bg-primary"></span>
+<span class="text-on-surface font-semibold">MongoDB CRUD operations and volunteer badge system.</span>
+</div>
+</div>
+<div class="flex justify-center mt-2"></div>
+    <a class="inline-flex items-center gap-2 text-primary font-medium hover:underline" href="https://github.com/irfanmohiddin/eldercareportal" target="_blank">
+        View on GitHub <span class="material-symbols-outlined text-base">arrow_outward</span>
+    </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Experience Section (Timeline) -->
+<section class="py-24 px-8 bg-surface" id="experience">
+<div class="max-w-4xl mx-auto space-y-16">
+<h2 class="font-serif text-5xl text-on-surface text-center">Professional Tenure</h2>
+<div class="space-y-12 relative before:absolute before:left-0 md:before:left-1/2 before:top-0 before:bottom-0 before:w-px before:bg-outline-variant/30">
+<!-- Role 1 -->
+<div class="relative flex flex-col md:flex-row gap-8 md:gap-0 items-start">
+<div class="md:w-1/2 md:pr-12 md:text-right">
+<div class="font-serif text-2xl text-on-surface">Full Stack Web Developer Intern</div>
+<div class="text-primary font-medium">Edunet Foundation</div>
+<div class="text-sm text-on-surface-variant mt-1 italic">2025</div>
+</div>
+<div class="absolute left-[-4px] md:left-1/2 md:translate-x-[-50%] w-2 h-2 rounded-full bg-primary ring-4 ring-surface"></div>
+<div class="md:w-1/2 md:pl-12 pt-1 md:pt-0">
+<p class="text-on-surface-variant leading-relaxed">Developed responsive web applications using HTML, CSS, JavaScript, Node.js, and Express.js with RESTful APIs and dynamic UI components. Managed MongoDB databases with CRUD operations and implemented secure OTP-based authentication. Participated in code reviews and agile workflows.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Education Section -->
+<section class="py-24 px-8 bg-surface-container-low" id="education">
+<div class="max-w-7xl mx-auto space-y-12">
+<h2 class="font-serif text-center text-4xl text-on-surface">Academic Background</h2>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest px-8 py-6 rounded-lg shadow-sm space-y-2">
+<div class="text-xs uppercase tracking-widest text-on-surface-variant">2024 — 2028</div>
+<div class="font-serif text-xl text-on-surface">B.Tech Computer Science</div>
+<div class="text-primary font-medium">SRM University AP</div>
+</div>
+<div class="bg-surface-container-lowest px-8 py-6 rounded-lg shadow-sm space-y-2">
+<div class="text-xs uppercase tracking-widest text-on-surface-variant">2022 — 2024</div>
+<div class="font-serif text-xl text-on-surface">Class 12th (ISC)</div>
+<div class="text-primary font-medium">Loyola Public School</div>
+</div>
+<div class="bg-surface-container-lowest px-8 py-6 rounded-lg shadow-sm space-y-2">
+<div class="text-xs uppercase tracking-widest text-on-surface-variant">2021 — 2022</div>
+<div class="font-serif text-xl text-on-surface">Class 10th (ICSE)</div>
+<div class="text-primary font-medium">Loyola Public School</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Certifications Section -->
+<section class="py-24 px-8 bg-surface" id="certifications">
+<div class="max-w-7xl mx-auto space-y-12">
+<h2 class="font-serif text-center text-4xl text-on-surface">Credentials &amp; Certifications</h2>
+<div class="flex flex-wrap justify-center gap-6">
+<div class="bg-surface-container-lowest px-8 py-6 rounded-lg flex items-center gap-4 shadow-sm">
+<span class="material-symbols-outlined text-primary">verified</span>
+<div>
+  <div class="font-semibold text-on-surface">Full Stack Web Development</div>
+  <div class="text-sm text-on-surface-variant">Edunet Foundation Internship</div>
+<button class="text-sm text-primary font-medium" onclick="window.open('https://drive.google.com/file/d/1j9iyLO7u9uEKD1qn4Y6g03fqv4doe9M6/view', '_blank')">View Certificate</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest px-8 py-6 rounded-lg flex items-center gap-4 shadow-sm">
+<span class="material-symbols-outlined text-primary">school</span>
+<div>
+  <div class="font-semibold text-on-surface">B.Tech Computer Science</div>
+  <div class="text-sm text-on-surface-variant">SRM University AP — 2024–2028</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest px-8 py-6 rounded-lg flex items-center gap-4 shadow-sm">
+<span class="material-symbols-outlined text-primary">event_available</span>
+<div>
+  <div class="font-semibold text-on-surface">SRMAP Discipline Committee</div>
+  <div class="text-sm text-on-surface-variant">Aloha, Infinitus 2026 & events</div>
+  <button class="text-sm text-primary font-medium" onclick="window.open('https://drive.google.com/file/d/1VzG2awZ-jTdmryts5TMfFUAPOS6Qr9Eo/view?usp=drive_link', '_blank')">View Certificate</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-24 px-8 bg-surface-container-low" id="contact">
+<div class="max-w-7xl mx-auto">
+<div class="grid md:grid-cols-2 gap-16">
+<div class="space-y-8">
+<h2 class="font-serif text-5xl text-on-surface">Let's start a <span class="italic text-primary">conversation.</span></h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+                        Whether you're looking for an intern, want to collaborate on a project, or just want to connect — I'm always open to new opportunities and conversations.
+                    </p>
+<div class="space-y-4 pt-4">
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-on-primary-container group-hover:text-on-primary">mail</span>
+</div>
+<div>
+<div class="text-sm text-on-surface-variant">Email</div>
+<div class="text-lg font-medium">irfanloyola2019@gmail.com</div>
+</div>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center group-hover:bg-primary transition-colors">
+<span class="text-on-primary-container group-hover:text-on-primary">
+  <svg xmlns="http://www.w3.org/2000/svg"
+       height="30"
+       width="30"
+       viewBox="0 0 24 24"
+       fill="currentColor">
+    <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8.34 17V10.5H6V17H8.34M7.17 9.35C7.92 9.35 8.5 8.77 8.5 8.02C8.5 7.27 7.92 6.69 7.17 6.69C6.42 6.69 5.84 7.27 5.84 8.02C5.84 8.77 6.42 9.35 7.17 9.35M18 17V13.25C18 11.61 17.07 10.5 15.66 10.5C14.8 10.5 14.29 10.97 14.08 11.4V10.5H11.75C11.78 11.09 11.75 17 11.75 17H14.08V13.61C14.08 13.43 14.09 13.25 14.15 13.12C14.29 12.77 14.62 12.41 15.15 12.41C15.84 12.41 16.12 12.94 16.12 13.72V17H18Z"/>
+  </svg>
+</span></div>
+<div>
+<div class="text-xl font-semibold text-on-surface-variant">
+    <button class="text-primary font-medium" onclick="window.open('https://www.linkedin.com/in/shaik-irfan-mohiddin-537589323/', '_blank')">LinkedIn</button>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center group-hover:bg-primary transition-colors">
+<span class="text-on-primary-container group-hover:text-on-primary">
+  <svg xmlns="http://www.w3.org/2000/svg" 
+       viewBox="0 0 24 24" 
+       width="30" 
+       height="30" 
+       fill="currentColor">
+    <path d="M7 2C4.24 2 2 4.24 2 7V17C2 19.76 4.24 22 7 22H17C19.76 22 22 19.76 22 17V7C22 4.24 19.76 2 17 2H7M17 4C18.66 4 20 5.34 20 7V17C20 18.66 18.66 20 17 20H7C5.34 20 4 18.66 4 17V7C4 5.34 5.34 4 7 4H17M12 7C9.24 7 7 9.24 7 12C7 14.76 9.24 17 12 17C14.76 17 17 14.76 17 12C17 9.24 14.76 7 12 7M12 9C13.66 9 15 10.34 15 12C15 13.66 13.66 15 12 15C10.34 15 9 13.66 9 12C9 10.34 10.34 9 12 9M17.5 6.5C16.95 6.5 16.5 6.95 16.5 7.5C16.5 8.05 16.95 8.5 17.5 8.5C18.05 8.5 18.5 8.05 18.5 7.5C18.5 6.95 18.05 6.5 17.5 6.5Z"/>
+  </svg>
+</span>
+</div>
+<div>
+<div class="text-xl font-semibold text-on-surface-variant">
+    <button class="text-primary font-medium" onclick="window.open('https://www.instagram.com/sim_268__/', '_blank')">Instagram</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 md:p-12 rounded-xl">
+<form id="contactForm" class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+<div class="space-y-2">
+<label class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Name</label>
+<input id="name" name="name"
+class="w-full bg-transparent border-0 border-b border-outline-variant/40 focus:ring-0 focus:border-primary px-0 py-2 transition-all placeholder:text-outline-variant/60"
+placeholder="Your Name"
+type="text"/>
+</div>
+
+<div class="space-y-2">
+<label class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Email</label>
+<input id="email" name="email"
+class="w-full bg-transparent border-0 border-b border-outline-variant/40 focus:ring-0 focus:border-primary px-0 py-2 transition-all placeholder:text-outline-variant/60"
+placeholder="your@email.com"
+type="email"/>
+</div>
+
+</div>
+
+<div class="space-y-2">
+<label class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Subject</label>
+<input id="subject" name="subject"
+class="w-full bg-transparent border-0 border-b border-outline-variant/40 focus:ring-0 focus:border-primary px-0 py-2 transition-all placeholder:text-outline-variant/60"
+placeholder="Internship / Collaboration / Other"
+type="text"/>
+</div>
+
+<div class="space-y-2">
+<label class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Message</label>
+<textarea id="message" name="message"
+class="w-full bg-transparent border-0 border-b border-outline-variant/40 focus:ring-0 focus:border-primary px-0 py-2 transition-all placeholder:text-outline-variant/60"
+placeholder="How can I help you?"
+rows="4"></textarea>
+</div>
+
+<button type="submit"
+class="w-full bg-primary text-on-primary py-4 rounded-md font-medium hover:bg-primary-dim transition-all shadow-md">
+Send Message
+</button>
+
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-100 dark:bg-slate-900 w-full py-12 px-8">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto border-t border-slate-200 dark:border-slate-800 pt-8">
+<div class="mb-8 md:mb-0 space-y-2">
+<div class="font-serif text-xl text-slate-800 dark:text-slate-200">Shaik Irfan Mohiddin</div>
+<div class="font-sans text-sm tracking-wide text-slate-600 dark:text-slate-400">© 2026 Shaik Irfan Mohiddin. All rights reserved.</div>
+</div>
+<div class="flex space-x-8 font-sans text-sm tracking-wide text-slate-600 dark:text-slate-400">
+<a class="text-2xl hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="https://github.com/irfanmohiddin" target="_blank">GitHub</a>
+<a class="text-2xl hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="mailto:irfanloyola2019@gmail.com">Email</a>
+</div>
+</div>
+</footer>
+</body>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbyDZkSnnHSc3XjsH2DWYFEoYnrezOukMS66edWzE5jVRblpXDKjjmiJZyZQcwDu78iF0w/exec";
+
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", function(e){
+e.preventDefault();
+
+const formData = new FormData(form);
+
+fetch(scriptURL, {
+method: "POST",
+body: formData
+})
+.then(response => {
+alert("Message sent successfully!");
+form.reset();
+})
+.catch(error => {
+alert("Error sending message");
+console.error(error);
+});
+
+});
+
+});
+</script>
+</html>
